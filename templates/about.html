@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block title %}About Me{% endblock %}
+{% block content %}
+<div class="about-page">
+    <section class="about-hero-new">
+        <img src="images/nanda.jpg" alt="Foto Profesional Anda" class="hero-profile-pic">
+        <h1>Nanda Nan Arif H</h1>
+        <p>AI & Full-Stack Developer | Mobile Developer | Graphic Designer</p>
+        <a href="#contact" class="btn-primary">Hubungi Saya</a>
+    </section>
+
+        <section class="skills-pyramid-section alternate-bg">
+            <h2>Keahlian Utama Saya</h2>
+            <div class="skills-pyramid-container">
+                 <div class="skill-row">
+                 <div class="skill-tag">Python</div>
+                 <div class="skill-tag">Flask</div>
+                 <div class="skill-tag">JavaScript</div>
+                 <div class="skill-tag">HTML5 & CSS3</div>
+                 <div class="skill-tag">AI & Machine Learning</div>
+                 <div class="skill-tag">RAG Architecture</div>
+                 <div class="skill-tag">REST APIs</div>
+            </div>
+            <div class="skill-row">
+                 <div class="skill-tag">Kotlin Development</div>
+                 <div class="skill-tag">Adobe Illustrator</div>
+                 <div class="skill-tag">Photoshop</div>
+            </div>
+        <div class="skill-row">
+            <div class="skill-tag">UI/UX Design</div>
+        </div>
+        </div>
+        </section>
+
+    <section class="vision-section alternate-bg">
+        <h2>Visi & Misi Saya</h2>
+        <p class="section-subtitle">Saya tidak hanya menulis kode, saya membangun solusi yang bermakna.</p>
+        <div class="vision-content">
+            <div class="vision-item">
+                <h3>Visi Saya</h3>
+                <p>Menjadi developer yang menciptakan produk teknologi inovatif yang mudah diakses dan memberikan dampak positif bagi kehidupan sehari-hari masyarakat.</p>
+            </div>
+            <div class="vision-item">
+                <h3>Misi Saya</h3>
+                <p>Mengaplikasikan keahlian dalam pengembangan web dan AI untuk memecahkan masalah nyata, sambil terus belajar dan berkolaborasi dalam lingkungan yang dinamis.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-showcase">
+        <h2>Project Showcase</h2>
+        <div class="project-block">
+            <div class="project-slider-container">
+                <div class="project-image-slide fade"><img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="FitCoach AI 1"></div>
+                <div class="project-image-slide fade"><img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="FitCoach AI 2"></div>
+            </div>
+            <div class="project-text">
+                <h3>AI Fitness Coach</h3>
+                <p>Aplikasi web full-stack yang memberikan saran fitness yang dipersonalisasi menggunakan arsitektur RAG dengan Large Language Model dari Replicate.</p>
+                <div class="tech-tags"><span>Flask</span><span>Replicate API</span><span>RAG</span></div>
+                <div class="project-links"><a href="#" class="btn-secondary">Lihat Kode</a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section alternate-bg">
+        <h2>Apa yang Saya Tawarkan</h2>
+        <p class="section-subtitle">Tiga pilar yang saya bawa ke dalam setiap tim dan proyek.</p>
+        <div class="value-items-container">
+            <div class="value-item">
+                <i class="fas fa-users"></i>
+                <h3>Semangat Kolaboratif</h3>
+                <p>Saya berkembang dalam tim, senang berbagi pengetahuan, dan percaya bahwa hasil terbaik datang dari kerja sama yang solid.</p>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-brain"></i>
+                <h3>Pendekatan Berbasis Data</h3>
+                <p>Saya terbiasa membuat keputusan yang didukung oleh data dan logika untuk memastikan solusi yang dibangun benar-benar efektif.</p>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-heart"></i>
+                <h3>Fokus Pada Pengguna</h3>
+                <p>Bagi saya, pengguna adalah pusat dari segalanya. Saya berdedikasi untuk menciptakan pengalaman yang intuitif dan menyenangkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Mari Terhubung</h2>
+        <p>Saya selalu antusias untuk mendiskusikan peluang baru, proyek kolaboratif, atau sekadar mengobrol tentang teknologi.</p>
+        <div class="social-links-lg">
+            <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:emailanda@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+</div>
+{% endblock %}

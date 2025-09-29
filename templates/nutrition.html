@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}Nutrition Guide{% endblock %}
+{% block content %}
+<div class="page-content">
+    <h1>Nutrition Guide</h1>
+    <p>Temukan informasi gizi dari berbagai jenis makanan dan minuman.</p>
+
+    <div class="filter-container">
+        <input type="text" id="food-search-input" placeholder="Cari nama makanan...">
+        <select id="category-filter">
+            <option value="all">Semua Kategori</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="nutrition-legend">
+        <h3>Legenda Gizi:</h3>
+        <div class="legend-item"><span class="legend-color-box calories"></span> Kalori</div>
+        <div class="legend-item"><span class="legend-color-box protein"></span> Protein</div>
+        <div class="legend-item"><span class="legend-color-box carbs"></span> Karbohidrat</div>
+        <div class="legend-item"><span class="legend-color-box fat"></span> Lemak</div>
+    </div>
+
+    <div class="food-grid">
+        {% for food in foods %}
+        <div class="food-card" data-name="{{ food.Food_Item|lower }}" data-category="{{ food.Category }}">
+            <h3>{{ food.Food_Item }}</h3>
+            <span class="food-category">{{ food.Category }}</span>
+            <div class="nutrition-bars">
+                <div class="nutrition-bar-item">
+                    <div class="bar-label">Kalori: {{ food['Calories (kcal)'] }} kcal</div>
+                    <div class="nutrition-bar calories" style="width: {{ (food['Calories (kcal)'] / 500 * 100)|round|int }}%;"></div> {# Max 500 kcal for scale #}
+                </div>
+                <div class="nutrition-bar-item">
+                    <div class="bar-label">Protein: {{ food['Protein (g)'] }} g</div>
+                    <div class="nutrition-bar protein" style="width: {{ (food['Protein (g)'] / 50 * 100)|round|int }}%;"></div> {# Max 50g protein for scale #}
+                </div>
+                <div class="nutrition-bar-item">
+                    <div class="bar-label">Karbohidrat: {{ food['Carbohydrates (g)'] }} g</div>
+                    <div class="nutrition-bar carbs" style="width: {{ (food['Carbohydrates (g)'] / 100 * 100)|round|int }}%;"></div> {# Max 100g carbs for scale #}
+                </div>
+                <div class="nutrition-bar-item">
+                    <div class="bar-label">Lemak: {{ food['Fat (g)'] }} g</div>
+                    <div class="nutrition-bar fat" style="width: {{ (food['Fat (g)'] / 30 * 100)|round|int }}%;"></div> {# Max 30g fat for scale #}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

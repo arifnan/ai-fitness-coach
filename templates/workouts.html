@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Explore Workouts{% endblock %}
+{% block content %}
+<div class="page-content">
+    <h1>Exercise Library</h1>
+    <p>Gunakan filter di bawah ini untuk menemukan latihan yang sempurna untuk Anda.</p>
+
+    <div class="filter-container">
+        <input type="text" id="search-input" placeholder="Cari nama latihan...">
+        <select id="bodypart-filter">
+            <option value="all">Semua Bagian Tubuh</option>
+            {% for part in body_parts %}
+            <option value="{{ part }}">{{ part }}</option>
+            {% endfor %}
+        </select>
+        <select id="level-filter">
+            <option value="all">Semua Level</option>
+            {% for level in levels %}
+            <option value="{{ level }}">{{ level }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="workout-grid">
+        {% for workout in workouts %}
+        <div class="workout-card" data-title="{{ workout.Title|lower }}" data-bodypart="{{ workout.BodyPart }}" data-level="{{ workout.Level }}">
+            <h3>{{ workout.Title }}</h3>
+            <div class="card-icons">
+                <span class="icon-tag"><i class="fas fa-dumbbell"></i> {{ workout.BodyPart }}</span>
+                <span class="icon-tag"><i class="fas fa-tachometer-alt"></i> {{ workout.Level }}</span>
+            </div>
+            <p><strong>Equipment:</strong> {{ workout.Equipment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,667 @@
+/* --- General & Navbar --- */
+:root {
+    --primary-color: #4CAF50;
+    --dark-text: #333;
+    --light-text: #555;
+    --background-light: #f8f9fa;
+    --background-green-tint: #e8f5e9;
+    --white-color: #ffffff;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--white-color);
+    color: var(--dark-text);
+}
+
+main {
+    padding-top: 60px;
+}
+
+.navbar {
+    background-color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 60px;
+}
+
+.nav-logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.alternate-bg {
+    background-color: var(--background-green-tint);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background: #ddd;
+    color: var(--dark-text);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #ccc;
+}
+
+
+/* --- Homepage Sections --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+.slide-text {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white-color);
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.fade { animation: fade 1.5s ease-in-out; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+.features {
+    text-align: center;
+    padding: 60px 20px;
+}
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.card {
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 250px;
+}
+.card i {
+    font-size: 40px;
+    color: var(--primary-color);
+}
+.card h3 {
+    margin-top: 20px;
+}
+
+.ai-intro-section {
+    padding: 60px 20px;
+}
+.ai-intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.ai-intro-text {
+    flex: 1;
+}
+.ai-intro-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+.ai-intro-text p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.ai-intro-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+.ai-intro-text ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.ai-intro-text ul li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+.ai-intro-image img {
+    max-width: 100%;
+    border-radius: 12px;
+}
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+}
+.testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.testimonials .card {
+    border-left: 5px solid var(--primary-color);
+    text-align: left;
+}
+.cta-section {
+    text-align: center;
+    padding: 80px 20px;
+}
+.cta-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+.chat-toggle-btn-main {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* --- Workouts Page --- */
+.page-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.filter-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.filter-container input, .filter-container select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+}
+.filter-container input {
+    flex-grow: 1;
+}
+.workout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+.workout-card {
+    background: var(--white-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex; /* Ditambahkan untuk layout yang lebih baik */
+    flex-direction: column; /* Ditambahkan untuk layout yang lebih baik */
+    justify-content: space-between; /* Ditambahkan untuk layout yang lebih baik */
+}
+.workout-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+.card-icons {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    color: var(--light-text);
+}
+.icon-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+.workout-card.hidden {
+    display: none; /* Ini adalah bagian krusial yang hilang */
+}
+
+
+/* --- ABOUT PAGE STYLES --- */
+.about-page h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+.about-page .section-subtitle {
+    font-size: 1.2em;
+    color: var(--light-text);
+    max-width: 600px;
+    margin: -30px auto 40px auto;
+    text-align: center;
+}
+.about-hero-new {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--white-color);
+}
+.hero-profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    /* Ganti baris di bawah ini */
+    border: 8px solid var(--primary-color); /* Border dengan warna primary */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.about-hero-new h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.about-hero-new p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* --- Section Keahlian (Layout Piramida Terbalik) --- */
+.skills-pyramid-section {
+    padding: 60px 20px;
+}
+.skills-pyramid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.skill-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Agar tetap rapi di layar kecil */
+}
+.skill-tag {
+    background-color: var(--white-color);
+    border: 1px solid #e9ecef;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1.1em;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.skill-tag:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+}
+
+.vision-section {
+    padding: 10px 20px;
+    background-color: white;
+}
+.vision-content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.project-showcase {
+    padding: 60px 20px;
+}
+.project-block {
+    max-width: 800px;
+    margin: 0 auto 80px auto;
+    background: var(--white-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.project-slider-container {
+    position: relative;
+    width: 100%;
+    padding-top: 62.5%;
+}
+.project-image-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.project-image-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.project-text {
+    padding: 30px;
+    text-align: center;
+}
+.project-text h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+.tech-tags span {
+    background: #eee;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin: 5px;
+    display: inline-block;
+}
+
+.value-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+.value-items-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.value-item {
+    max-width: 320px;
+}
+.value-item i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contact-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: var(--dark-text);
+    color: var(--white-color);
+}
+.contact-section p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+.social-links-lg a {
+    font-size: 2.5em;
+    margin: 0 20px;
+    color: var(--white-color);
+    transition: color 0.3s;
+}
+.social-links-lg a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Chat Widget --- */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 28px;
+    z-index: 1001;
+}
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+.chat-popup.active {
+    display: flex;
+}
+.chat-header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #e5ddd5;
+}
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.5;
+    font-size: 14px;
+}
+.message.user {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+.message.bot {
+    background-color: var(--white-color);
+    align-self: flex-start;
+}
+.message.bot-loading {
+    color: var(--light-text);
+    font-style: italic;
+}
+.chat-input-form {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid var(--border-color);
+}
+#user-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+.chat-input-form button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+
+/* --- Nutrition Page --- */
+.nutrition-legend {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(31, 172, 54, 0.819);
+    max-width: 800px;
+    margin: 40px auto 40px auto; /* Tambahkan margin agar tidak terlalu dekat dengan filter */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+.nutrition-legend h3 {
+    margin: 0;
+    font-size: 1.2em;
+    flex-basis: 100%; /* Agar judul legenda berada di baris terpisah */
+    margin-bottom: 15px;
+    color: var(--dark-text);
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+    color: var(--light-text);
+}
+.legend-color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.legend-color-box.calories { background-color: #FFC107; } /* Kuning */
+.legend-color-box.protein { background-color: #2196F3; } /* Biru */
+.legend-color-box.carbs { background-color: #4CAF50; } /* Hijau */
+.legend-color-box.fat { background-color: #F44336; }    /* Merah */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Sedikit lebih lebar */
+    gap: 20px;
+    margin-top: 30px;
+}
+.food-card {
+    background: var(--white-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.178);
+    border-top: 4px solid var(--primary-color); /* Bisa dipertahankan atau dihapus jika ingin warna bar lebih menonjol */
+    display: flex;
+    flex-direction: column;
+}
+.food-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--dark-text);
+}
+.food-category {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-display: bold;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.nutrition-bars {
+    margin-top: 15px;
+    flex-grow: 1; /* Memastikan bar mengambil sisa ruang vertikal */
+}
+.nutrition-bar-item {
+    margin-bottom: 10px;
+}
+.bar-label {
+    font-size: 0.9em;
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+.nutrition-bar {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #eee; /* Warna dasar bar jika kosong */
+    max-width: 100%; /* Batasi agar tidak keluar */
+    transition: width 0.5s ease-out; /* Animasi saat lebar berubah */
+}
+/* Warna spesifik untuk setiap nutrisi */
+.nutrition-bar.calories { background-color: #FFC107; }
+.nutrition-bar.protein { background-color: #2196F3; }
+.nutrition-bar.carbs { background-color: #4CAF50; }
+.nutrition-bar.fat { background-color: #F44336; }
+
+.food-card.hidden {
+    display: none;
+}

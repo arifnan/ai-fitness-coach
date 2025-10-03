@@ -2,3 +2,4 @@ flask
 python-dotenv
 pandas
 ibm-watson-machine-learning
+replicate

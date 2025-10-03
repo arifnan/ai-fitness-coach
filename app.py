@@ -1,21 +1,21 @@
 import os
 import pandas as pd
 from flask import Flask, request, jsonify
-from flask_cors import CORS # Pastikan Anda sudah install: pip install Flask-Cors
-from dotenv import load_dotenv
+from flask_cors import CORS
+from dotenv import load_dotenv, find_dotenv
 import replicate
 
 # --- Konfigurasi Awal ---
-load_dotenv()
+load_dotenv(find_dotenv())
+
 app = Flask(__name__)
-CORS(app)
-# Mengizinkan permintaan dari frontend Next.js Anda
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
+
+CORS(app, resources={r"/api/*": {"origins": "*"}}) # Mengizinkan semua origin untuk API
 
 # --- Memproses Data Latihan ---
 try:
     df_latihan = pd.read_csv('cleaned_megaGymDataset.csv')
-    # Membersihkan nilai kosong (NaN) dan menggantinya dengan string kosong
     df_latihan.fillna('', inplace=True)
     workouts_list = df_latihan.to_dict(orient='records')
     print("✅ Dataset latihan berhasil dimuat dan dibersihkan.")
@@ -28,7 +28,6 @@ except FileNotFoundError:
 try:
     df_makanan = pd.read_csv('daily_food_nutrition_dataset.csv')
     df_makanan.columns = df_makanan.columns.str.strip()
-    # Membersihkan nilai kosong (NaN) dan menggantinya dengan 0 untuk data numerik
     df_makanan.fillna(0, inplace=True)
     
     unique_foods = df_makanan.groupby('Food_Item').agg({
@@ -71,15 +70,15 @@ def cari_info_makanan(pertanyaan_user: str) -> str:
 @app.route('/api/workouts')
 def get_workouts_data():
     if df_latihan is not None:
-        body_parts = sorted(df_latihan['BodyPart'].unique())
-        levels = sorted(df_latihan['Level'].unique())
+        body_parts = sorted(list(df_latihan['BodyPart'].unique()))
+        levels = sorted(list(df_latihan['Level'].unique()))
         return jsonify({'workouts': workouts_list, 'filters': {'body_parts': body_parts, 'levels': levels}})
     return jsonify({'error': 'Workout data not found'}), 404
 
 @app.route('/api/nutrition')
 def get_nutrition_data():
     if unique_foods is not None:
-        categories = sorted(unique_foods['Category'].unique())
+        categories = sorted(list(unique_foods['Category'].unique()))
         return jsonify({'foods': foods_list, 'filters': {'categories': categories}})
     return jsonify({'error': 'Nutrition data not found'}), 404
 
@@ -113,8 +112,6 @@ def tanya_ai():
     [Jawaban Coach FitCare]
     """
     try:
-        # Pastikan REPLICATE_API_TOKEN sudah di-set di file .env Anda
-        # Library Replicate akan otomatis membacanya dari environment
         output_iterator = replicate.run(
             "ibm-granite/granite-3.3-8b-instruct",
             input={"prompt": prompt, "max_new_tokens": 512}
@@ -125,6 +122,3 @@ def tanya_ai():
         print(f"Error saat menghubungi Replicate: {e}")
         return jsonify({"error": f"Error contacting AI service: {e}"}), 500
     
-    
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)

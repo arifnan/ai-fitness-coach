@@ -62,6 +62,12 @@ Kami tidak hanya "membungkus" sebuah Large Language Model (LLM). Kami mengimplem
 2.  **Augmentation (Penyempurnaan):** Informasi faktual yang ditemukan ini (misalnya, deskripsi latihan yang benar atau data kalori yang tepat) kemudian "dilampirkan" pada pertanyaan pengguna. Ini menciptakan sebuah prompt baru yang jauh lebih kaya konteks.
 3.  **Generation (Penghasilan Jawaban):** Prompt yang sudah disempurnakan inilah yang dikirim ke model AI. Dengan "contekan" berbasis data ini, AI tidak perlu menebak-nebak. Ia dapat merangkai jawaban yang tidak hanya terdengar alami tetapi juga berakar pada fakta dari database kita.
 
+**Keunggulan RAG:**
+* **Mengurangi Halusinasi**: Mencegah AI "mengarang" jawaban.
+* **Akurasi Tinggi**: Jawaban didasarkan pada sumber data yang terverifikasi.
+* **Spesifik dan Relevan**: AI dapat memberikan detail yang hanya ada di dalam dataset kita.
+
+
 ### Dampak Nyata Penggunaan AI
 * **Membangun Kepercayaan Pengguna:** Dampak terbesar adalah **mitigasi risiko halusinasi AI**. Dalam aplikasi kesehatan, memberikan informasi yang salah bisa berbahaya. Dengan RAG, kami memastikan jawaban AI terikat pada data yang telah kami kurasi, menjadikannya sumber yang jauh lebih aman dan dapat diandalkan dibandingkan chatbot AI generik.
 * **Menciptakan Pengalaman Personal:** AI memungkinkan setiap pengguna mendapatkan jawaban yang terasa seperti percakapan satu-lawan-satu. Pengguna tidak perlu lagi menyaring ratusan artikel; mereka bisa langsung bertanya dan mendapatkan jawaban yang relevan untuk kebutuhan spesifik mereka, secara instan.

@@ -1,6 +1,6 @@
 # ai-fitness-coach
 
-# FitCare AI: Backend API & AI Engine
+itCare AI: Backend API & AI Engine
 
 ## 💡 Visi & Latar Belakang Proyek
 

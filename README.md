@@ -1,94 +1,68 @@
 # ai-fitness-coach
-
 FitCare AI: Backend API & AI Engine
 
-## 💡 Visi & Latar Belakang Proyek
+## 1. Project Overview
 
-Di era digital saat ini, informasi kesehatan seharusnya mudah diakses. Namun, kenyataannya justru sebaliknya. Calon pengguna seringkali dihadapkan pada "Tembok Informasi" yang membingungkan, mahal, dan tidak dapat diandalkan.
+### Latar Belakang & Permasalahan yang Diangkat
 
-**Masalah yang Kami Pecahkan:**
+Di era digital saat ini, akses terhadap informasi kesehatan seharusnya menjadi hak, bukan sebuah kemewahan. Namun, ironisnya, internet justru menciptakan paradoks: semakin banyak informasi, semakin tinggi tingkat kebingungan dan misinformasi.
 
-* **Banjir Misinformasi:** Sebuah studi menunjukkan bahwa **lebih dari 87%** konten fitness di platform video populer mengandung informasi yang tidak akurat secara ilmiah. Ini menciptakan kebingungan dan risiko cedera.
-* **Biaya yang Tinggi:** Jasa seorang pelatih pribadi atau ahli gizi profesional bisa mencapai jutaan rupiah per bulan, membuatnya tidak terjangkau bagi sebagian besar masyarakat.
-* **Kurangnya Personalisasi:** Saran generik "satu untuk semua" dari internet seringkali tidak efektif. Setiap individu membutuhkan panduan yang disesuaikan dengan kebutuhan dan level kebugaran mereka.
+**Data yang Mendasari Proyek Ini:**
+* **Krisis Kepercayaan:** Sebuah studi dari Universitas Alberta menemukan bahwa **lebih dari 87%** konten fitness yang paling banyak dilihat di YouTube mengandung informasi yang tidak akurat secara ilmiah dan berpotensi membahayakan.
+* **Hambatan Finansial:** Biaya untuk menyewa seorang pelatih pribadi bersertifikat di kota-kota besar Indonesia dapat dengan mudah melebihi **Rp 3.000.000 per bulan**, membuatnya tidak terjangkau bagi mayoritas populasi.
+* **Kebingungan Pengguna:** Pengguna pemula dihadapkan pada ribuan artikel dan video yang seringkali kontradiktif, menyebabkan frustrasi, demotivasi, dan program latihan yang tidak efektif.
 
-**Solusi Kami:** **FitCare AI** lahir dari visi untuk mendemokratisasi akses terhadap panduan kesehatan yang andal dan terpersonalisasi. Kami membangun jembatan antara data fitness berbasis sains dan pengguna awam melalui kekuatan Kecerdasan Buatan (AI), menyediakannya secara gratis dan tersedia 24/7.
+**FitCare AI** hadir sebagai jawaban atas tantangan ini. **Tujuan proyek ini sangat jelas:** **mendemokratisasi akses terhadap panduan fitness dan nutrisi yang andal, terpersonalisasi, dan berbasis data, melalui sebuah platform yang gratis dan dapat diakses kapan saja.**
 
----
+### Pendekatan Kami
 
-## 🚀 Deskripsi Proyek
-
-Layanan ini adalah **otak dan tulang punggung** dari platform FitCare AI. Dibangun menggunakan **Python** dan **Flask**, backend ini berfungsi sebagai API (Application Programming Interface) yang tangguh dan cerdas. Tugas utamanya adalah mengelola data, melayani permintaan dari frontend, dan yang terpenting, menjalankan logika AI yang canggih untuk memberikan jawaban yang akurat dan relevan kepada pengguna.
-
----
-
-## 🛠️ Teknologi yang Digunakan
-
-| Kategori      | Teknologi                                                              |
-| :------------ | :--------------------------------------------------------------------- |
-| **Bahasa** | Python 3.10+                                                           |
-| **Framework** | Flask                                                                  |
-| **Server** | Gunicorn (Untuk Produksi)                                              |
-| **Data** | Pandas                                                                 |
-| **AI** | Replicate API (Model: `ibm-granite/granite-3.3-8b-instruct`)           |
-| **Manajemen** | `python-dotenv` (Environment Variables), `Flask-Cors` (Konektivitas API) |
+Kami membangun sebuah layanan backend yang berfungsi sebagai "otak" terpusat. Pendekatan ini menggunakan arsitektur API modern yang memisahkan logika bisnis dan AI dari antarmuka pengguna, memastikan sistem yang lebih aman, skalabel, dan mudah dikelola.
 
 ---
 
-## ✨ Fitur Unggulan
+## 2. Teknologi yang Digunakan
 
-* **API Data Terstruktur**: Menyediakan endpoint `/api/workouts` dan `/api/nutrition` yang menyajikan data latihan dan nutrisi bersih dalam format JSON.
-* **Sistem Chatbot Cerdas**: Endpoint `/api/ask` yang menerima pertanyaan dalam bahasa alami.
-* **Pembersihan Data Otomatis**: Secara dinamis memproses dan membersihkan dataset CSV dari nilai-nilai kosong (`NaN`) untuk memastikan integritas data API.
-* **Arsitektur Siap Produksi**: Dirancang untuk dijalankan dengan Gunicorn, memastikan stabilitas dan kemampuan menangani banyak permintaan.
+Setiap teknologi dipilih dengan tujuan spesifik untuk menciptakan backend yang efisien, tangguh, dan siap untuk masa depan.
 
----
-
-## 🧠 Penjelasan Arsitektur AI: Retrieval-Augmented Generation (RAG)
-
-Fitur chatbot kami bukan sekadar pembungkus API biasa. Kami mengimplementasikan arsitektur **Retrieval-Augmented Generation (RAG)** untuk menghasilkan jawaban yang superior.
-
-**Bagaimana Cara Kerjanya?**
-
-1.  **Retrieval (Pengambilan Informasi)**: Saat pengguna bertanya (misal: "bagaimana cara melakukan crunch?"), sistem tidak langsung bertanya ke AI. Ia pertama-tama "membaca buku" dengan mencari kata kunci "crunch" di dalam dataset latihan (`cleaned_megaGymDataset.csv`).
-2.  **Augmentation (Penambahan Konteks)**: Informasi relevan yang ditemukan (deskripsi, bagian tubuh, level) kemudian "distabilo" dan digabungkan dengan pertanyaan asli pengguna.
-3.  **Generation (Penghasilan Jawaban)**: Prompt yang sudah diperkaya ini (`Pertanyaan Pengguna + Konteks dari Database`) dikirim ke model AI di Replicate. Dengan konteks tambahan ini, AI bisa memberikan jawaban yang jauh lebih akurat dan faktual, berdasarkan data yang kita miliki.
-
-**Keunggulan RAG:**
-* **Mengurangi Halusinasi**: Mencegah AI "mengarang" jawaban.
-* **Akurasi Tinggi**: Jawaban didasarkan pada sumber data yang terverifikasi.
-* **Spesifik dan Relevan**: AI dapat memberikan detail yang hanya ada di dalam dataset kita.
+| Teknologi         | Peran dalam Proyek                                                                                                                          | Alasan Pemilihan                                                                                                                              |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Python** | Bahasa pemrograman utama.                                                                                                                   | Ekosistemnya yang matang untuk *data science* (Pandas) dan pengembangan web menjadikannya pilihan alami dan paling efisien.                |
+| **Flask** | *Micro-framework* untuk membangun API.                                                                                                      | Sifatnya yang ringan dan modular sangat ideal untuk membangun layanan API yang terfokus, tanpa *overhead* dari *framework* yang lebih besar. |
+| **Gunicorn** | WSGI *production server*.                                                                                                                   | Krusial untuk *deployment*. Gunicorn mampu menangani banyak permintaan secara bersamaan dan jauh lebih stabil daripada server bawaan Flask.   |
+| **Pandas** | Memuat, membersihkan, dan memproses dataset `.csv`.                                                                                         | Alat standar industri untuk manipulasi data. Memungkinkan pemrosesan dataset latihan dan nutrisi secara efisien saat aplikasi dimulai.         |
+| **Replicate API** | Platform untuk mengakses model AI canggih.                                                                                                  | Menyediakan akses *serverless* ke model AI seperti **IBM Granite** tanpa perlu mengelola infrastruktur AI yang kompleks.                      |
+| **Flask-Cors** | Mengelola kebijakan Cross-Origin Resource Sharing.                                                                                          | Komponen keamanan esensial yang memungkinkan frontend (di domain berbeda) untuk berkomunikasi secara aman dengan backend ini.                 |
+| **Dotenv** | Mengelola *environment variables*.                                                                                                          | Praktik keamanan fundamental untuk menjaga kerahasiaan kunci API dan kredensial lainnya, memisahkannya dari *source code*.                 |
 
 ---
 
-## ⚙️ Instruksi Setup & Menjalankan
+## 3. Fitur Utama
 
-1.  **Clone repositori ini** ke mesin lokal Anda.
-2.  **Buat dan aktifkan virtual environment:**
-    ```bash
-    # Buat environment
-    python -m venv venv
-    # Aktifkan (Windows)
-    venv\Scripts\activate
-    # Aktifkan (Mac/Linux)
-    # source venv/bin/activate
-    ```
-3.  **Install semua dependensi** yang dibutuhkan:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  **Konfigurasi Environment Variable**: Buat file bernama `.env` di direktori utama dan tambahkan kunci API Replicate Anda:
-    ```
-    REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxxx
-    ```
-5.  **Jalankan Server**:
-    * **Untuk Development Lokal (mudah & cepat):**
-        ```bash
-        flask run
-        ```
-    * **Untuk Simulasi Produksi (menggunakan Gunicorn):**
-        ```bash
-        gunicorn app:app
-        ```
+Layanan backend ini menyediakan tiga pilar fungsionalitas utama melalui API endpoint yang terstruktur.
 
-Layanan backend sekarang akan berjalan dan siap menerima permintaan dari frontend.
+* **Penyedia Data Dinamis (`/api/workouts` & `/api/nutrition`)**
+    * **Cara Kerja:** Saat dijalankan, server secara otomatis memuat dataset `cleaned_megaGymDataset.csv` dan `daily_food_nutrition_dataset.csv`. Data tersebut dibersihkan dari nilai-nilai kosong (`NaN`) untuk memastikan integritas JSON, lalu disajikan melalui endpoint API.
+    * **Fungsi:** Menyediakan data mentah yang bersih dan terstruktur untuk ditampilkan dan difilter oleh aplikasi frontend, memungkinkan pembuatan perpustakaan latihan dan panduan nutrisi yang interaktif.
+
+* **Mesin Percakapan AI (`/api/ask`)**
+    * **Cara Kerja:** Endpoint ini menerima pertanyaan pengguna dalam bahasa alami. Ia kemudian menjalankan logika RAG (dijelaskan di bawah) untuk mencari konteks internal, menyusun prompt yang disempurnakan, dan mengirimkannya ke model AI `ibm-granite/granite-3.3-8b-instruct`.
+    * **Fungsi:** Ini adalah fitur inti dari aplikasi. Ia mengubah platform dari sekadar penampil data statis menjadi seorang pelatih virtual yang dapat menjawab pertanyaan spesifik pengguna secara dinamis.
+
+---
+
+## 4. Penjelasan Dukungan AI
+
+Penggunaan AI dalam proyek ini bukan sekadar gimik; ini adalah fondasi yang memberikan nilai unik dan memecahkan masalah inti dari misinformasi.
+
+### Arsitektur: Retrieval-Augmented Generation (RAG)
+
+Kami tidak hanya "membungkus" sebuah Large Language Model (LLM). Kami mengimplementasikan arsitektur **RAG** untuk menciptakan sistem yang lebih cerdas dan dapat dipercaya.
+
+1.  **Retrieval (Pengambilan):** Saat sebuah pertanyaan masuk, sistem kami tidak langsung bertanya pada AI. Ia bertindak seperti seorang peneliti, dengan cepat memindai dataset internal kami (`.csv` files) untuk menemukan potongan informasi yang paling relevan dengan pertanyaan tersebut.
+2.  **Augmentation (Penyempurnaan):** Informasi faktual yang ditemukan ini (misalnya, deskripsi latihan yang benar atau data kalori yang tepat) kemudian "dilampirkan" pada pertanyaan pengguna. Ini menciptakan sebuah prompt baru yang jauh lebih kaya konteks.
+3.  **Generation (Penghasilan Jawaban):** Prompt yang sudah disempurnakan inilah yang dikirim ke model AI. Dengan "contekan" berbasis data ini, AI tidak perlu menebak-nebak. Ia dapat merangkai jawaban yang tidak hanya terdengar alami tetapi juga berakar pada fakta dari database kita.
+
+### Dampak Nyata Penggunaan AI
+* **Membangun Kepercayaan Pengguna:** Dampak terbesar adalah **mitigasi risiko halusinasi AI**. Dalam aplikasi kesehatan, memberikan informasi yang salah bisa berbahaya. Dengan RAG, kami memastikan jawaban AI terikat pada data yang telah kami kurasi, menjadikannya sumber yang jauh lebih aman dan dapat diandalkan dibandingkan chatbot AI generik.
+* **Menciptakan Pengalaman Personal:** AI memungkinkan setiap pengguna mendapatkan jawaban yang terasa seperti percakapan satu-lawan-satu. Pengguna tidak perlu lagi menyaring ratusan artikel; mereka bisa langsung bertanya dan mendapatkan jawaban yang relevan untuk kebutuhan spesifik mereka, secara instan.
+* **Skalabilitas Bimbingan:** AI memungkinkan kami untuk memberikan "bimbingan ahli" kepada ribuan pengguna secara bersamaan, sebuah tugas yang tidak mungkin dilakukan oleh pelatih manusia, sehingga benar-benar mencapai misi kami untuk mendemokratisasi pengetahuan kesehatan.

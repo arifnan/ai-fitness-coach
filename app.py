@@ -13,7 +13,6 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/api/*": {"origins": "*"}}) # Mengizinkan semua origin untuk API
 
-# --- Memproses Data Latihan ---
 try:
     df_latihan = pd.read_csv('cleaned_megaGymDataset.csv')
     df_latihan.fillna('', inplace=True)
@@ -74,6 +73,18 @@ def get_workouts_data():
         levels = sorted(list(df_latihan['Level'].unique()))
         return jsonify({'workouts': workouts_list, 'filters': {'body_parts': body_parts, 'levels': levels}})
     return jsonify({'error': 'Workout data not found'}), 404
+
+@app.route('/api/workout/<int:workout_id>')
+def get_workout_detail(workout_id):
+    """Endpoint untuk mendapatkan detail satu latihan berdasarkan ID-nya."""
+    if df_latihan is not None:
+        try:
+            workout = df_latihan.loc[df_latihan['Unnamed: 0'] == workout_id].to_dict('records')[0]
+            return jsonify(workout)
+        except (IndexError, KeyError):
+            return jsonify({'error': 'Workout not found'}), 404
+    return jsonify({'error': 'Workout data not available'}), 404
+
 
 @app.route('/api/nutrition')
 def get_nutrition_data():
